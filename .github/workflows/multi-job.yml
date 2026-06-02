@@ -1,0 +1,26 @@
+name: Multi Job practical
+on:
+  push:
+    branchs:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: echo "Running test"
+
+  build:
+    need: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Application
+        run: echo "Building phase"
+
+  deploy:
+    need: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Application
+        run: echo "Deployed"
+        
